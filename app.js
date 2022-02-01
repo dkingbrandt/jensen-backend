@@ -67,7 +67,8 @@ app.post('/authorize', (req, res) => {
 
    if(user===credentials.secretUser && password===credentials.secretPassword){
       
-      
+      auditLog.addTransport("console");
+      auditLog.logEvent( `user with the credentials ${user} and password ${password} just logged in`)
       // auditLog.logEvent("kungen")
       const token = jwt.sign({
          
