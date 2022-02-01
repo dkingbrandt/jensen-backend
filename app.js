@@ -68,7 +68,7 @@ app.post('/authorize', (req, res) => {
    if(user===credentials.secretUser && password===credentials.secretPassword){
       
       auditLog.addTransport("console");
-      auditLog.logEvent( `user with the credentials ${user} and password ${password}`,"https://dan-backend.herokuapp.com/authorize","logged in",)
+      auditLog.logEvent( ` The user with the username: ${user} and password: ${password}`,"https://dan-backend.herokuapp.com/authorize","logged in",)
       // auditLog.logEvent("kungen")
       const token = jwt.sign({
          
