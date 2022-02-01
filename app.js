@@ -67,8 +67,7 @@ app.post('/authorize', (req, res) => {
 
    if(user===credentials.secretUser && password===credentials.secretPassword){
 
-      auditLog.addTransport("console");
-      auditLog.logEvent(password)
+      
 
       
       console.log("Authorized")
