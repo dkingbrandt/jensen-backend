@@ -57,21 +57,17 @@ app.post('/authorize', (req, res) => {
    let user = req.body.user;
    let password = req.body.password;
    console.log(`User ${user}`)
-    console.log(`Password ${password}`)
-    
-
+   console.log(`Password ${password}`)
    
 
    
+
+   //   app.use(auditLogExpress.middleware);
    
 
    if(user===credentials.secretUser && password===credentials.secretPassword){
-
-      
-
-      
       console.log("Authorized")
-     
+      auditLog.addTransport("console");
       
       // auditLog.logEvent("kungen")
       const token = jwt.sign({
