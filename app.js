@@ -87,6 +87,6 @@ app.listen(PORT , ()=>{
      console.log(`STARTED LISTENING ON PORT ${PORT}`)
 });
 
-https.createServer(option, app).listen(443, function(){
-   console.log("HTTPS LISTENING ON 443")
-})
+// https.createServer(option, app).listen(443, function(){
+//    console.log("HTTPS LISTENING ON 443")
+// })
