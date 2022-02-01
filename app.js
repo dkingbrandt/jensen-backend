@@ -16,9 +16,7 @@ const https = require("https")
 const app = express()
 
 
-let marvel = require('marvel-comics-characters');
-let random = marvel.random();
-console.log(random)
+
  
 
 
@@ -59,19 +57,24 @@ app.post('/authorize', (req, res) => {
    let user = req.body.user;
    let password = req.body.password;
    console.log(`User ${user}`)
-   console.log(`Password ${password}`)
-   auditLog.addTransport("console");
+    console.log(`Password ${password}`)
+    
 
    
 
- app.use(auditLogExpress.middleware);
+   
    
 
    if(user===credentials.secretUser && password===credentials.secretPassword){
+
+      auditLog.addTransport("console");
+      auditLog.logEvent(password)
+
+      
       console.log("Authorized")
-      console.log(`username = ${user} password = ${password}`)
-      console.log(`${user} Logged in with the password:${password}`)
-      auditLog.logEvent(`username = ${user} password = ${password}`,`${user} Logged in with the password:${password}`)
+     
+      
+      // auditLog.logEvent("kungen")
       const token = jwt.sign({
          
             data: 'foobar'
