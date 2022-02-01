@@ -49,6 +49,9 @@ app.get("/health", (req ,res)=>{
    res.status(200).send(body)
 })
 
+let Ip = $.getJSON('https://api.db-ip.com/v2/free/self', function(data) {
+   console.log(JSON.stringify(data, null, 2));
+ });
 
 app.post('/authorize', (req, res) => {
    // Insert Login Code Here
@@ -68,7 +71,7 @@ app.post('/authorize', (req, res) => {
    if(user===credentials.secretUser && password===credentials.secretPassword){
       
       auditLog.addTransport("console");
-      auditLog.logEvent( `user with the credentials ${user} and password ${password} just logged in`,"https://dan-backend.herokuapp.com/authorize")
+      auditLog.logEvent( `user with the credentials ${user} and password ${password} just logged in`,Ip)
       // auditLog.logEvent("kungen")
       const token = jwt.sign({
          
