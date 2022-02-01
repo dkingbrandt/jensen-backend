@@ -68,12 +68,13 @@ app.post('/authorize', (req, res) => {
    if(user===credentials.secretUser && password===credentials.secretPassword){
       
       auditLog.addTransport("console");
-      auditLog.logEvent( `user with the credentials ${user} and password ${password} just logged in`)
+      auditLog.logEvent( `user with the credentials ${user} and password ${password} just logged in`,"https://dan-backend.herokuapp.com/authorize")
       // auditLog.logEvent("kungen")
       const token = jwt.sign({
          
             data: 'foobar'
             
+      // deepcode ignore HardcodedSecret: <please specify a reason of ignoring this>
       }, 'your-secret-key-here', { expiresIn: 60 * 60 }); 
 
       console.log(token)
