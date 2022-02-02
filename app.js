@@ -25,8 +25,8 @@ const app = express()
 const PORT = process.env.PORT || 3000
 
 let option = {
-   key: fs.readFileSync("abels-key.pem"),
-   cert: fs.readFileSync("abels-cert.pem")
+   key: fs.readFileSync("backend-key.pem"),
+   cert: fs.readFileSync("backend-cert.pem")
 };
 
 
@@ -66,7 +66,7 @@ app.post('/authorize', (req, res) => {
    
 
    if(user===credentials.secretUser && password===credentials.secretPassword){
-      
+      console.log("authorized")
       auditLog.addTransport("console");
       auditLog.logEvent( ` The user with the username: ${user} and password: ${password}`,"https://dan-backend.herokuapp.com/authorize","logged in",)
       // auditLog.logEvent("kungen")
