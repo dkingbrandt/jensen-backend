@@ -32,7 +32,7 @@ let option = {
 
 
 
-app.use('./healthcheck', require('./routes/healthcheck.routes'));
+app.use('./healthcheck', require('./routes/healthcheck.routes.js'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors())
