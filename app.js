@@ -32,7 +32,7 @@ let option = {
 
 
 
-app.use('./healthcheck', require('./routes/healthcheck.routes.js'));
+app.use('/healthcheck', require('./routes/healthcheck.routes.js'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors())
@@ -43,11 +43,11 @@ app.get("/", (req ,res)=>{
    res.status(200).send(body)
 })
 
-app.get("/health", (req ,res)=>{
+ app.get("/health", (req ,res)=>{
    headers={"http_status":200, "cache-control":  "no-cache"}
    body={"status": "available"}
    res.status(200).send(body)
-})
+ })
 
 
 app.post('/authorize', (req, res) => {
@@ -89,6 +89,6 @@ app.listen(PORT , ()=>{
      console.log(`STARTED LISTENING ON PORT ${PORT}`)
 });
 
-// https.createServer(option, app).listen(443, function(){
-//    console.log("HTTPS LISTENING ON 443")
-// })
+//  https.createServer(option, app).listen(443, function(){
+//     console.log("HTTPS LISTENING ON 443")
+//  })
